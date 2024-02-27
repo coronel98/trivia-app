@@ -30,15 +30,22 @@ onMounted(async () => {
 
 })
 
+
+
 </script>
+
 
 
 <template>
 
 <div v-if="question" class="flex h-full w-full flex-col items-center gap-8 p-10">
   <BaseTitle>{{  question.category }}</BaseTitle>
+  <!-- {{  question.question }} -->
+
+  <div v-html="question.question" class="text-center text-2xl font-bold"></div>
   
 
+ 
 </div>
 <div v-else class="">
   Loading...
