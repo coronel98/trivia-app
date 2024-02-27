@@ -51,10 +51,16 @@ const shuffle = (array) => {
   <BaseTitle>{{  question.category }}</BaseTitle>
   <!-- {{  question.question }} -->
 
-  
+  <div v-html="question.question" class="text-center text-2xl font-bold"></div>
+  <div class="grid w-full flex-grow grid-cols-2 gap-8">
+      <div v-for="answer in answers" 
+      v-html="answer.answer" 
+      :key="answer.id" 
+      class="bg-green-500 flex items-center justify-center text-4xl rounded-lg text-white py-10 px-2 ">
 
+      </div>
 
-  
+  </div>
 </div>
 <div v-else class="">
   Loading...
