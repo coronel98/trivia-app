@@ -1,5 +1,40 @@
+<script setup>
+import { onMounted, ref } from 'vue';
+import useAPI from '@/composables/useAPI';
+import { useRoute } from 'vue-router';
+import BaseTitle from '@/components/BaseTitle.vue';
+const api = useAPI()
+const question = ref(null)
+const route = useRoute()
+const answers = ref([])
+onMounted(async () => {
+  question.value = await api.getQuestion(route.params.id)
+
+  answers.value.push({
+    id: answers.value.length,
+    correct: true,
+    answer: question.value.correct_answer
+  })
+
+  question.value.incorrect_answers.map((wrong_answer) => {
+    answers.value.push({
+      id: answers.value.length,
+      correct: false,
+      answer: wrong_answer
+    })
+
+  })
+
+  answers.value = shuffle(answers.value)
+  // console.log(question.value)
+
+})
+
+
+</script>
+
+
 <template>
-  <main class="flex min-h-screen items-center justify-center">
-    <h1 class="text-6xl font-thin text-slate-800">I'm Other Page</h1>
-  </main>
+
+{{ question }}
 </template>
