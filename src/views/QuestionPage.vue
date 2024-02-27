@@ -30,6 +30,15 @@ onMounted(async () => {
 
 })
 
+const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    //swap
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array
+}
 
 
 </script>
@@ -42,10 +51,10 @@ onMounted(async () => {
   <BaseTitle>{{  question.category }}</BaseTitle>
   <!-- {{  question.question }} -->
 
-  <div v-html="question.question" class="text-center text-2xl font-bold"></div>
   
 
- 
+
+  
 </div>
 <div v-else class="">
   Loading...
