@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import useAPI from '@/composables/useAPI';
 import { useRoute } from 'vue-router';
 import BaseTitle from '@/components/BaseTitle.vue';
+import DifficultyChip from '@/components/DifficultyChip.vue';
 const api = useAPI()
 const question = ref(null)
 const route = useRoute()
@@ -61,6 +62,7 @@ const shuffle = (array) => {
       </div>
 
   </div>
+  <DifficultyChip :difficulty="question.difficulty"></DifficultyChip>
 </div>
 <div v-else class="">
   Loading...
